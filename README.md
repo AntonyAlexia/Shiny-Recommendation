@@ -8,9 +8,10 @@ A table listing the books that satisfy the chosen criteria, a plot of the mean r
 
 This book recommendation software helps users find new and intriguing books to read by utilizing a large dataset of book suggestions from Kaggle. It provides individualized suggestions based on the user's reading tastes and history in addition to user-generated ratings and reviews. The user-friendly, simple layout makes for a pleasurable, stress-free browsing experience. The software also offers customers more insights into the book recommendation dataset through data visualization and statistical inference tools. Users may visually examine the dataset using the data visualization tools, and the statistical inference function uses machine learning methods to forecast the user's reading habits.
 
-install.packages('shiny')
+```install.packages('shiny')
 library(shiny)
 shiny::runGitHub("Shiny-Recommendation","AntonyAlexia")
+```
 
 Web Link :
 ### https://bookrecommendationapp.shinyapps.io/shinybookapp/
