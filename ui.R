@@ -1,27 +1,33 @@
 library(shinythemes)
 library(plotly)
+library(shinyjs)
 
 
 source("global.R")
 ui <- fluidPage(
   navbarPage(
-    theme = shinytheme("readable"),
-    "Book Recommendation",
+    theme = shinytheme("slate"),
+    "Mathematician Alexia",
     tabPanel("Book search",
              fluidRow(
+               useShinyjs(),
                sidebarLayout(
                  sidebarPanel(
                    radioButtons(inputId = "search_type", label = "Search by:", 
                                 choices = c("Book title", "Author"), selected = "Book title"),
                    conditionalPanel(
-                     condition = "input.search_type == 'Book title'",
-                     selectInput(inputId = "title", label = "Enter book title", 
-                                 choices = unique(books_data$Book.Title))
+                     "input.search_type == 'Book title'",
+                     selectizeInput(inputId = "title", label = "Enter Book Title", 
+                                    choices = NULL, 
+                                    selected = NULL
+                     )
                    ),
                    conditionalPanel(
-                     condition = "input.search_type == 'Author'",
-                     selectInput(inputId = "author", label = "Select author", 
-                                 choices = unique(books_data$Book.Author))
+                     "input.search_type == 'Author'",
+                     selectizeInput(inputId = "author", label = "Select Book Author", 
+                                    choices = NULL, 
+                                    selected = NULL
+                     )
                    ),
                    sliderInput(inputId = "year", label = "Select publication year", 
                                min = 1980, max = 2010, 
@@ -40,10 +46,10 @@ ui <- fluidPage(
     tabPanel("Data Visualization",
              sidebarLayout(
                sidebarPanel(
-                 selectInput("select_var", label = "Select variable to plot", 
+                 selectizeInput("select_var", label = "Select variable to plot", 
                              choices = c("Book Title", "Book Author")),
-                 selectInput("location_var", label = "Select location", 
-                             choices = unique(books_data$Location)),
+                 selectizeInput(inputId = "location_var", label = "Select location", 
+                             choices = NULL),
                  sliderInput("rating_slider", label = "Select minimum rating", min = 0, max = 10, value = 0),
                  sliderInput("year_slider", label = "Select year range", min = 1980, max = 2010, value = c(1980, 2010)),
                  actionButton(inputId = "search_plot", label = "Search plot")
@@ -60,10 +66,10 @@ ui <- fluidPage(
     tabPanel("Statistical Inference",
              sidebarPanel(
                h4("Comparing Average Ratings by Two Groups"),
-               selectInput(inputId = "group1", label = "Select Author 1",
-                           choices = unique(books_data$Book.Author)),
-               selectInput(inputId = "group2", label = "Select Author 2",
-                           choices = unique(books_data$Book.Author)),
+               selectizeInput(inputId = "group1", label = "Select Author 1",
+                           choices = NULL, selected = NULL),
+               selectizeInput(inputId = "group2", label = "Select Author 2",
+                           choices = NULL, selected = NULL),
                actionButton(inputId = "compare", label = "Compare")
              ),
              mainPanel(
