@@ -1,5 +1,16 @@
 server <- function(input, output, session) {
   
+  updateSelectizeInput(session = session, inputId ="title", choices=unique(books_data$Book.Title), selected=unique(books_data$Book.Title), server = TRUE)
+  
+  onclick("title", {
+    updateSelectizeInput(session, "title", selected = "")
+  })
+  
+  updateSelectizeInput(session = session, inputId ="author",choices=unique(books_data$Book.Author),selected=unique(books_data$Book.Author), server = TRUE)
+  
+  onclick("author", {
+    updateSelectizeInput(session, "author", selected = "")
+  })
   filtered_books <- eventReactive(input$search, {
     if (input$search_type == "Book title") {
       books_data %>%
@@ -12,22 +23,14 @@ server <- function(input, output, session) {
         filter(Book.Author == input$author,
                Year.Of.Publication >= input$year[1] & Year.Of.Publication <= input$year[2],
                Book.Rating >= input$rating) %>%
-        distinct(Book.Rating, Book.Author, .keep_all = TRUE)
+        distinct(Book.Title, Book.Author, .keep_all = TRUE)
     }
   })
   
-  updateSelectizeInput(session = session, inputId ="title", choices=unique(books_data$Book.Title), selected=unique(books_data$Book.Title), server = TRUE)
-  
-  onclick("title", {
-    updateSelectizeInput(session, "title", selected = "")
+  output$booktable <- renderTable({
+    filtered_books()%>%
+      select(Book.Title, Book.Author, Year.Of.Publication, Book.Rating) 
   })
-  
-  updateSelectizeInput(session = session, inputId ="author",choices=unique(books_data$Book.Author),selected=unique(books_data$Book.Author), server = TRUE)
-  
-  onclick("author", {
-    updateSelectizeInput(session, "author", selected = "")
-  })
-  
   output$booktable <- renderTable({
     filtered_books() %>%
       select(Book.Title, Book.Author, Year.Of.Publication, Book.Rating) 
@@ -92,4 +95,5 @@ server <- function(input, output, session) {
   }
 
 shinyApp(ui, server)
+
 
