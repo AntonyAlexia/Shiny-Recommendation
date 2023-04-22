@@ -14,7 +14,7 @@ shiny::runGitHub("Shiny-Recommendation","AntonyAlexia")
 ```
 
 Web Link :
-### https://bookrecommendationapp.shinyapps.io/shinybookapp/
+https://bookrecommendationapp.shinyapps.io/shinybookapp/
  
 Here are some quick instructions for using the app:
 
