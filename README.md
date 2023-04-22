@@ -2,19 +2,18 @@
 This recommendation app  allow the user to search books and Data visualization then this app show the statistical interference to compare two groups using t-test.
 
 ABSTRACT:
-The purpose of the app is to allow users to search and filter a dataset of books based on various criteria such as book title, author, publication year, and rating. The data set used in the app is not specified, but it can be assumed that it contains information about books such as their titles, authors, publication years, and ratings.
+The purpose of the application is to provide users with the ability to search and filter a collection of books using several criteria, including the book's title, author, publishing year, and rating. Although the data set utilized in the app is not explicitly stated, it is likely to include details on books including their names, authors, release dates, and ratings.
 
-The expected output for the user side of the app includes a table displaying the books that match the selected criteria, a plot showing the mean rating of books based on the selected variable (book title or author), and a p-value from a t-test comparing the ratings of two selected groups of books. The app also allows users to select and filter the data interactively through drop-down menus and sliders. Overall, this app provides an interactive and user-friendly way to explore and analyze a dataset of books.
+A table listing the books that satisfy the chosen criteria, a plot of the mean rating of books based on the chosen variable (book title or author), and a p-value from a t-test comparing the ratings of two groups of books are all examples of the intended output for the user side of the app. Through drop-down menus and sliders, the software also enables interactive data selection and filtering for users. Overall, this software offers a fun and intuitive method to explore and examine a collection of books.
 
-This book recommendation app utilizes a comprehensive dataset of book recommendations from Kaggle, allowing users to discover new and interesting books to read. It offers personalized recommendations based on the user's reading history and preferences, as well as community-generated ratings and reviews. The interface is user-friendly and intuitive, providing an enjoyable and effortless browsing experience. The app also includes data visualization and statistical inference features that provide users with deeper insights into the book recommendation dataset. The data visualization tools allow users to explore the dataset visually, while the statistical inference feature utilizes machine learning algorithms to make predictions about the user's reading preferences.
-
+This book recommendation software helps users find new and intriguing books to read by utilizing a large dataset of book suggestions from Kaggle. It provides individualized suggestions based on the user's reading tastes and history in addition to user-generated ratings and reviews. The user-friendly, simple layout makes for a pleasurable, stress-free browsing experience. The software also offers customers more insights into the book recommendation dataset through data visualization and statistical inference tools. Users may visually examine the dataset using the data visualization tools, and the statistical inference function uses machine learning methods to forecast the user's reading habits.
 
 install.packages('shiny')
 library(shiny)
 shiny::runGitHub("Shiny-Recommendation","AntonyAlexia")
 
 Web Link :
-###https://bookrecommendationapp.shinyapps.io/shinybookapp/
+### https://bookrecommendationapp.shinyapps.io/shinybookapp/
  
 Here are some quick instructions for using the app:
 
@@ -29,6 +28,8 @@ To run a t-test on the authors' book ratings, choose two from the drop-down choi
 To view the t-test results, click the "Compare" button.
 Remark: The data set utilized in the program is given internally, and the user interface does not allow you to modify the data set.
 
+Cite :
+https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
 Preview Link :
 ### https://bookrecommendationapp.shinyapps.io/shinybookapp/
